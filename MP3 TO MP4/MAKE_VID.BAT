@@ -46,7 +46,13 @@ rem ffmpeg -y -loop 1 -i "Harry G. Frankfurt.jpg" -i "long.mp3" -c:v h264_nvenc 
 
 rem ffmpeg -y -r 1 -loop 1 -i "untitled.jpg" -i "Epidemioloog Dick Bijl over wachten met nemen van het vaccin - Nieuwsbericht - NPO Radio 2.mp3" -c:v h264_nvenc -profile:v high -pix_fmt yuv420p -b:v 50K -bufsize 20M -bf:v 3 -preset slow -rc:v vbr_hq -rc-lookahead 32 -shortest -acodec mp2 -ac 1 -ar 22050 -ab 32k -r 1 "Epidemioloog Dick Bijl over wachten met nemen van het vaccin - Nieuwsbericht - NPO Radio 2.mp4"
 
-ffmpeg -y -r 1 -loop 1 -i "download.png" -i "NA-1356-2021-06-17-Final.mp3" -c:v h264_nvenc -profile:v high -pix_fmt yuv420p -b:v 50K -bufsize 20M -bf:v 3 -preset slow -rc:v vbr_hq -rc-lookahead 32 -shortest  -r 1 -c:a copy "NA-1356-2021-06-17-Final.mp4"
+rem REPLACE: -c:v h264_nvenc -profile:v high -pix_fmt yuv420p -b:v 50K -bufsize 20M -bf:v 3 -preset slow -rc:v vbr_hq -rc-lookahead 32
+rem    WITH: -c:v libx264 -preset veryfast -crf 23 -pix_fmt yuv420p
+rem or WITH: -c:v libx264 -preset slow -b:v 50K -pix_fmt yuv420p
+rem or something like it...
+rem for non nvidia cards
+
+ffmpeg -y -r 1 -loop 1 -i "download.png" -i "NA-1356-2021-06-17-Final.mp3" -c:v h264_nvenc -profile:v high -pix_fmt yuv420p -b:v 50K -bufsize 20M -bf:v 3 -preset slow -rc:v vbr_hq -rc-lookahead 32 -shortest -r 1 -c:a copy "NA-1356-2021-06-17-Final.mp4"
 
 pause
 
