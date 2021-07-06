@@ -1,4 +1,4 @@
-rem @echo off
+@echo off
 set PATH=%CD%\BIN\FFMPEG_NEW;%CD%\BIN;%PATH%
 setlocal ENABLEDELAYEDEXPANSION
 
@@ -44,8 +44,8 @@ exit /b
 for /f "tokens=*" %%J in ('dir /b "%~n1.*.vtt"') do (
 	if not exist "%%~nJ.srt" ffmpeg -i "%%J" "%%~nJ.srt"
 )
-for /f "tokens=*" %%J in ('dir /b "%~n1.*.srt"') do (
-rem for /f "tokens=*" %%J in ('dir /b "%~n1.nl.srt"') do (
+rem for /f "tokens=*" %%J in ('dir /b "%~n1.*.srt"') do (
+for /f "tokens=*" %%J in ('dir /b "%~n1.nl.srt"') do (
 	if not exist "%%J.fixed" sof.exe "%%J"
 
 	call :GET_LANGUAGE "%%~nJ"

@@ -94,6 +94,5 @@ for /F "tokens=*" %%R in (bit_rate.txt) do (
 	for /f "tokens=1,2 delims==" %%a in ("%%R") do set NAME=%%a & set BITRATE=%%b
 )
 rem ffprobe -select_streams v -show_entries packet=size:stream=duration -of compact=p=0:nk=1
-echo BITRATE=!BITRATE!
 exit /b
 	

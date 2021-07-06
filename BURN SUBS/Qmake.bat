@@ -1029,10 +1029,19 @@ rem ffmpeg -fflags +genpts -r 60 -i raw.h264 -c:v h264_nvenc -profile:v high -pi
 
 rem ffmpeg -i "The Secret Covenant.faster.mp4" -r 60 -t 00:06:49.5 -c copy out60.mp4
 
-ffmpeg -y -hide_banner -ss 00:20:00 -i "Eric Clapton.m4a" -c copy "Eric Clapton2.m4a"
+rem ffmpeg -y -hide_banner -ss 00:20:00 -i "Eric Clapton.m4a" -c copy "Eric Clapton2.m4a"
+rem 
+rem ffmpeg -y -hide_banner -i "Eric Clapton2.m4a" -i "en/“Zal ik ooit nog gitaar spelen na de Corona prik-” vraagt Eric Clapton zich af in een openhartig interview— blckbx.en.mp4" -filter_complex "[0]volume=0.3[m];[m][1]amix=inputs=2[a]" -map 1:v -map [a] -shortest -c:v copy EC.EN.MP4
+rem 
+rem ffmpeg -y -hide_banner -i "Eric Clapton2.m4a" -i "nl/“Zal ik ooit nog gitaar spelen na de Corona prik-” vraagt Eric Clapton zich af in een openhartig interview— blckbx.nl.mp4" -filter_complex "[0]volume=0.3[m];[m][1]amix=inputs=2[a]" -map 1:v -map [a] -shortest -c:v copy EC.NL.MP4
 
-ffmpeg -y -hide_banner -i "Eric Clapton2.m4a" -i "en/“Zal ik ooit nog gitaar spelen na de Corona prik-” vraagt Eric Clapton zich af in een openhartig interview— blckbx.en.mp4" -filter_complex "[0]volume=0.3[m];[m][1]amix=inputs=2[a]" -map 1:v -map [a] -shortest -c:v copy EC.EN.MP4
 
-ffmpeg -y -hide_banner -i "Eric Clapton2.m4a" -i "nl/“Zal ik ooit nog gitaar spelen na de Corona prik-” vraagt Eric Clapton zich af in een openhartig interview— blckbx.nl.mp4" -filter_complex "[0]volume=0.3[m];[m][1]amix=inputs=2[a]" -map 1:v -map [a] -shortest -c:v copy EC.NL.MP4
 
+
+rem ffmpeg -y -hide_banner -i "How to save the world, in three easy steps..mp4" -c:v h264_nvenc -profile:v high -pix_fmt yuv420p -bufsize 20M -bf:v 3 -b:v 600k -preset slow -rc:v vbr_hq -rc-lookahead 32 -c:a copy "How to save the world, in three easy steps..small.mp4"
+
+rem ffmpeg -y -hide_banner -i "My Recording_7.mp4" -c:v h264_nvenc -profile:v high -pix_fmt yuv420p -bufsize 20M -bf:v 3 -b:v 600k -preset slow -rc:v vbr_hq -rc-lookahead 32 -c:a copy "rutte.mp4"
+
+ffmpeg -y -hide_banner -i "The Secret Covenant.faster.mp4" -t 00:06:48 -c copy "The Secret Covenant.faster.cut.mp4"
 pause
+
